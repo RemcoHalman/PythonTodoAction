@@ -1,0 +1,25 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Set the python versions to be installed and run of
+        python-version: [3.8]
+    steps:
+      # Check out the repo content
+      - name: checkout repo content
+        uses: actions/checkout@v2
+      # Setup python versions
+      - name: Setup up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      # Run python scripts in set versions
+      - name: Execute Linting
+        run: |
+          pip install flake8
+          flake8 scr/scan.py
