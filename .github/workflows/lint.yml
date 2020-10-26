@@ -22,4 +22,4 @@ jobs:
       - name: Execute Linting
         run: |
           pip install flake8
-          flake8 scr/scan.py
+          flake8 src/scan.py
