@@ -13,13 +13,16 @@ jobs:
       # Check out the repo content
       - name: checkout repo content
         uses: actions/checkout@v2
-      # Setup python versions
+      # Setup python versions and install dependencies
       - name: Setup up python
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      # Run python scripts in set versions
-      - name: Execute Linting
+          - name: Install Dependencies
         run: |
           pip install flake8
           flake8 src/scan.py
+      # Run python scripts in set versions
+      - name: Running Linting
+        run: |
+          flake8 src/*.py
