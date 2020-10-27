@@ -1,2 +1,6 @@
 .git
 .vscode
+
+json/**
+__pycache__
+test**.py
