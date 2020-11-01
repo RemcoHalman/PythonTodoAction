@@ -1,9 +1,9 @@
 name: Lint
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
+  linting:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,8 +21,17 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install flake8
-          flake8 src/scan.py
       # Run python scripts in set versions
       - name: Running Linting
         run: |
           flake8 src/*.py
+        - uses: nashmaniac/create-issue-action@v1.1
+        if: ${{ failure() }} # only run when this job is failed.
+        name: Create Issue Action
+        with:
+          title: Linter Failed
+          token: ${{secrets.GITHUB_TOKEN}}
+          assignees: ${{github.actor}}
+          labels: refactoring-needed
+          body: Linter failed for commit ${{github.sha}}
+  

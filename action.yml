@@ -3,12 +3,13 @@ name: Todo Creator (issue maker)
 description: This action scans all files and created todo's and fixme's
 
 inputs:
-  title:
-    required: true
-    description: Title of the issue
   token:
     required: true
     description: Token of the user that creates the issue
+  path:
+    required: false
+    description: Scan path to folder
+    default: ./
   labels:
     required: false
     default: ""
