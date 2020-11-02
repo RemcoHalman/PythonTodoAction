@@ -1,7 +1,7 @@
 import json
 
 
-class writer():
+class Writer():
     def put(data, filename):
         try:
             jsondata = json.dumps(data,
@@ -23,7 +23,18 @@ class writer():
             text = fd.read()
             fd.close()
             returndata = json.loads(text)
-        except Exception as e:
-            print('COULD NOT LOAD:', filename)
-            print(e)
+        except IOError as e:
+            print('COULD NOT LOAD:', e.filename)
         print(returndata)
+
+
+class DoorMat():
+    def top(width):
+        print(" Check if TODO or FIXME exist ".center(width, "*"))
+        print("".center(width, "*"))
+        print("")
+
+    def bottom(width):
+        print("")
+        print("".center(width, "*"))
+        print(" End Check ".center(width, "*"))
