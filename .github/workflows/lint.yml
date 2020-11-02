@@ -24,7 +24,7 @@ jobs:
       # Run python scripts in set versions
       - name: Running Linting
         run: |
-          flake8 src/*.py
+          flake8 src/*
       - uses: nashmaniac/create-issue-action@v1.1
         if: ${{ failure() }} # only run when this job is failed.
         name: Create Issue Action
