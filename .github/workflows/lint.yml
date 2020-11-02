@@ -32,5 +32,5 @@ jobs:
           title: Linter Failed
           token: ${{secrets.GITHUB_TOKEN}}
           assignees: ${{github.actor}}
-          labels: refactoring-needed
+          labels: refactoring-needed, fix needed
           body: Linter failed for commit ${{github.sha}}

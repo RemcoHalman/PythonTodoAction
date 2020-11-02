@@ -13,6 +13,7 @@ class BackgroundColors():
     def printColor(value, color, end=END):
         print(color + value + end)
 
+
 class Writer():
     def put(data, filename):
         try:
