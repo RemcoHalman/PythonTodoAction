@@ -13,10 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: RemcoHalman/PythonTodoAction/src/scan@main
+      - uses: RemcoHalman/PythonTodoAction@main
+        with: 
+          token: ${{secrets.GITHUB_TOKEN}}
+          assignees: ${{github.actor}}
 ```
 
 ### TODO
 
-- [ ] exclude path
+- [x] exclude path
 - [ ] exclude file
